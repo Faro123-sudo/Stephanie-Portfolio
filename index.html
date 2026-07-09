@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stephanie Beno - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/test-script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+    </script>
+    <script src="/_next/static/chunks/webpack-da70d7d3a59628b2.js" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="/frontend/resume-interactions.js"></script>
+    <!-- <script src="/Users/USER-DD/Downloads/bootstrap/bootstrap-5.3.3/bootstrap-5.3.3/js/tests/"></script> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+
+    <style>
+        :root {
+            --brown-dark: #8B4513;
+            --brown-light: #A0522D;
+            --beige: #F5DEB3;
+            --beige-light: #FFF8DC;
+        }
+
+        * {
+            font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html.dark-mode {
+            --brown-dark: #b3aaaa;
+            --brown-light: #d1bfa7;
+            --beige: #222;
+            --beige-light: #111;
+            color: #fff !important;
+            background: var(--beige-light) !important;
+        }
+
+        /* Cute animations and interactions */
+        .gradient-text {
+            background: linear-gradient(45deg, var(--brown-dark), var(--brown-light), #daa520);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradient-shift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-socials {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .floating-socials a {
+            display: block;
+            margin: 10px 0;
+            padding: 12px;
+            background: var(--beige);
+            border-radius: 50%;
+            color: var(--brown-dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-socials a:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .floating-socials a:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .floating-socials a:nth-child(3) {
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating-socials a:hover {
+            background: var(--brown-dark);
+            color: var(--beige);
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .code-particle {
+            position: absolute;
+            font-size: 14px;
+            color: rgba(139, 69, 19, 0.3);
+            animation: code-float linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes code-float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        img {
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        section {
+            animation: fade-in 1s ease-out;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .ripple-effect {
+            animation: ripple 0.6s linear;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Cute button styles */
+        button,
+        a {
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before,
+        a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button:hover::before,
+        a:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Dark mode enhancements */
+        html.dark-mode .floating-socials a {
+            background: var(--beige);
+            color: var(--brown-dark);
+        }
+
+        html.dark-mode .floating-socials a:hover {
+            background: var(--brown-light);
+            color: var(--beige-light);
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .floating-socials {
+                right: 10px;
+            }
+
+            .floating-socials a {
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: var(--beige-light); color: var(--brown-dark);" class="relative overflow-x-hidden">
+    <!-- Floating Social Media Icons -->
+    <div class="floating-socials">
+        <a href="https://github.com/Faro123-sudo" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/limaro-beno-061846222" target="_blank" title="LinkedIn"><i
+                class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:benostephanie16@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <!-- Floating Code Particles -->
+    <div id="code-container" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 shadow-md" style="background-color: var(--beige);">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold gradient-text">Stephanie Beno</div>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="#about" class="hover:text-[var(--brown-light)] smooth-scroll">About</a></li>
+                <li><a href="#resume" class="hover:text-[var(--brown-light)] smooth-scroll">Resume</a></li>
+                <li><a href="#portfolio" class="hover:text-[var(--brown-light)] smooth-scroll">Portfolio</a></li>
+                <li><a href="#contact" class="hover:text-[var(--brown-light)] smooth-scroll">Contact</a></li>
+            </ul>
+            <button id="toggle-dark"
+                class="ml-4 px-3 py-1 rounded-full border border-[var(--brown-dark)] bg-[var(--beige)] text-[var(--brown-dark)] hover:bg-[var(--brown-dark)] hover:text-white transition">🌙</button>
+        </div>
+    </nav>
+
+    <section class="min-h-screen flex flex-col justify-center items-center text-center pt-20">
+        <h1 class="text-6xl font-bold gradient-text">Stephanie Beno</h1>
+        <p class="text-xl text-[var(--brown-light)] mt-4" id="typewriter-text"></p>
+        <div class="flex flex-wrap justify-center gap-4 mt-6 text-sm text-[var(--brown-light)]">
+            <span><i class="fas fa-map-marker-alt mr-1"></i>Lagos, Nigeria</span>
+            <span><i class="fas fa-phone mr-1"></i>+234 806 499 4608</span>
+            <span><i class="fas fa-envelope mr-1"></i>benostephanie16@gmail.com</span>
+            <a href="https://www.linkedin.com/in/limaro-beno-061846222" target="_blank"
+                class="hover:text-[var(--brown-dark)]"><i class="fab fa-linkedin mr-1"></i>LinkedIn</a>
+            <a href="https://github.com/Faro123-sudo" target="_blank" class="hover:text-[var(--brown-dark)]"><i
+                    class="fab fa-github mr-1"></i>GitHub</a>
+        </div>
+        <div class="flex gap-4 mt-8">
+            <a href="#portfolio" class="bg-[var(--brown-dark)] text-white px-6 py-3 rounded-full hover-scale">View
+                Portfolio</a>
+            <a href="#contact" class="border-2 border-[var(--brown-dark)] px-6 py-3 rounded-full hover-scale">Get In
+                Touch</a>
+        </div>
+    </section>
+
+    <section id="about" class="py-20" style="background-color: var(--beige);">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6">Professional Summary</h2>
+            <p class="mb-4 text-lg leading-relaxed">Software Engineering graduate from Veritas University, Abuja, with
+                interests in Artificial Intelligence, Web Development, UI/UX Design, and Data Analysis. Experienced in
+                developing AI-powered academic projects, designing intuitive user interfaces, and collaborating on
+                software engineering teams using Git and Agile-inspired workflows. Passionate about building user-focused
+                applications, continuously learning emerging technologies, and applying technical skills to solve
+                real-world problems.</p>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-20" style="background-color: var(--beige-light);">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-8 text-center">Resume</h2>
+
+            <!-- Technical Skills -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4">Technical Skills</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-4 rounded-lg" style="background-color: var(--beige);">
+                        <h4 class="font-semibold mb-2">Programming Languages</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">Python</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">JavaScript</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">Java</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">C++</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">SQL</span>
+                        </div>
+                    </div>
+                    <div class="p-4 rounded-lg" style="background-color: var(--beige);">
+                        <h4 class="font-semibold mb-2">Web Development</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">HTML5</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">CSS3</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">React.js</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">Node.js</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">Express.js</span>
+                        </div>
+                    </div>
+                    <div class="p-4 rounded-lg" style="background-color: var(--beige);">
+                        <h4 class="font-semibold mb-2">AI & Data</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">Machine
+                                Learning</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">Data
+                                Analysis</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">Pandas</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">NumPy</span>
+                        </div>
+                    </div>
+                    <div class="p-4 rounded-lg" style="background-color: var(--beige);">
+                        <h4 class="font-semibold mb-2">Databases</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">MySQL</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">PostgreSQL</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">MongoDB</span>
+                        </div>
+                    </div>
+                    <div class="p-4 rounded-lg" style="background-color: var(--beige);">
+                        <h4 class="font-semibold mb-2">Tools & Technologies</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">Git</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">GitHub</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">VS Code</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">Figma</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">MS Office</span>
+                        </div>
+                    </div>
+                    <div class="p-4 rounded-lg" style="background-color: var(--beige);">
+                        <h4 class="font-semibold mb-2">Software Engineering</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">OOP</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">Software
+                                Design</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">Version
+                                Control</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">Agile</span>
+                            <span class="px-3 py-1 rounded-full text-sm"
+                                style="background-color: var(--brown-dark); color: var(--beige-light);">Software
+                                Testing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4">Education</h3>
+                <div class="p-6 rounded-lg" style="background-color: var(--beige);">
+                    <div class="font-semibold text-lg">Bachelor of Science (B.Sc.) in Software Engineering</div>
+                    <div class="text-sm text-[var(--brown-light)] mb-2">Veritas University — Graduated 2026</div>
+                    <p class="font-medium mb-2">Relevant Coursework:</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 rounded-full text-xs"
+                            style="background-color: var(--beige-light); border: 1px solid var(--brown-dark);">Artificial
+                            Intelligence</span>
+                        <span class="px-3 py-1 rounded-full text-xs"
+                            style="background-color: var(--beige-light); border: 1px solid var(--brown-dark);">Software
+                            Engineering</span>
+                        <span class="px-3 py-1 rounded-full text-xs"
+                            style="background-color: var(--beige-light); border: 1px solid var(--brown-dark);">Cybersecurity</span>
+                        <span class="px-3 py-1 rounded-full text-xs"
+                            style="background-color: var(--beige-light); border: 1px solid var(--brown-dark);">Data
+                            Structures & Algorithms</span>
+                        <span class="px-3 py-1 rounded-full text-xs"
+                            style="background-color: var(--beige-light); border: 1px solid var(--brown-dark);">Database
+                            Systems</span>
+                        <span class="px-3 py-1 rounded-full text-xs"
+                            style="background-color: var(--beige-light); border: 1px solid var(--brown-dark);">Human
+                            Computer Interaction</span>
+                        <span class="px-3 py-1 rounded-full text-xs"
+                            style="background-color: var(--beige-light); border: 1px solid var(--brown-dark);">Software
+                            Quality Assurance</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4">Projects</h3>
+                <div class="space-y-4">
+                    <div class="p-5 rounded-lg hover-lift" style="background-color: var(--beige);">
+                        <h4 class="font-semibold">AI-Based ECG Bio-Signal Processing System</h4>
+                        <p class="text-sm text-[var(--brown-light)]">Python, Artificial Intelligence</p>
+                        <p class="mt-1">Collaborated on a 4-person team to build an AI-powered ECG preprocessing system. Authored technical documentation, managed GitHub version control, and designed UI wireframes. Gained hands-on experience in biomedical signal processing and AI model integration.</p>
+                    </div>
+                    <div class="p-5 rounded-lg hover-lift" style="background-color: var(--beige);">
+                        <h4 class="font-semibold">AI Mental Health Diagnosis System</h4>
+                        <p class="text-sm text-[var(--brown-light)]">Python, Machine Learning</p>
+                        <p class="mt-1">Designed an intelligent system for preliminary mental health assessments using ML classification. Researched internationally recognized diagnostic guidelines to inform system logic. Built with a focus on accessibility and a user-friendly interface.</p>
+                    </div>
+                    <div class="p-5 rounded-lg hover-lift" style="background-color: var(--beige);">
+                        <h4 class="font-semibold">FairAgro — Agricultural Tech Solution</h4>
+                        <p class="text-sm text-[var(--brown-light)]">Web Development, Team Collaboration</p>
+                        <p class="mt-1">Contributed to a team building a web platform to improve agricultural processes. Responsible for system planning, feature documentation, and front-end implementation. Followed Agile-inspired sprints with weekly stand-ups and retrospectives.</p>
+                    </div>
+                    <div class="p-5 rounded-lg hover-lift" style="background-color: var(--beige);">
+                        <h4 class="font-semibold">Smart Lamp AI Project</h4>
+                        <p class="text-sm text-[var(--brown-light)]">Artificial Intelligence, IoT Concepts</p>
+                        <p class="mt-1">Developed an intelligent smart lamp prototype with automated decision-making based on environmental inputs. Applied AI concepts including rule-based logic and sensor data processing to create responsive smart device functionality.</p>
+                    </div>
+                    <div class="p-5 rounded-lg hover-lift" style="background-color: var(--beige);">
+                        <h4 class="font-semibold">Interactive Calculator Homepage</h4>
+                        <p class="text-sm text-[var(--brown-light)]">HTML, CSS, JavaScript, Three.js</p>
+                        <p class="mt-1">Built an interactive landing page featuring 3D animations powered by Three.js. Focused on responsive design, cross-browser compatibility, and polished user experience. Demonstrates front-end creativity and modern web development skills.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4">Certifications</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-lg" style="background-color: var(--beige);">
+                        <i class="fas fa-certificate text-[var(--brown-dark)] mr-2"></i>Cisco – Introduction to
+                        Artificial Intelligence
+                    </div>
+                    <div class="p-4 rounded-lg" style="background-color: var(--beige);">
+                        <i class="fas fa-certificate text-[var(--brown-dark)] mr-2"></i>Cisco – Cybersecurity
+                    </div>
+                </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4">Achievements & Extracurricular</h3>
+                <div class="p-5 rounded-lg" style="background-color: var(--beige);">
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Successfully delivered 5+ academic and personal software projects from concept to demo.</li>
+                        <li>Presented team projects at university showcases and departmental evaluations.</li>
+                        <li>Active participant in tech communities and collaborative coding groups.</li>
+                        <li>Completed industry-recognized certifications in AI and Cybersecurity (Cisco).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Leadership & Teamwork -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4">Leadership & Teamwork</h3>
+                <div class="p-5 rounded-lg" style="background-color: var(--beige);">
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Collaborated in multiple software engineering group projects using Agile workflows.</li>
+                        <li>Contributed to software documentation, planning, testing, and project presentations.</li>
+                        <li>Led team communication and task coordination during project development cycles.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Soft Skills -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4">Soft Skills</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 rounded-full text-sm"
+                        style="background-color: var(--brown-dark); color: var(--beige-light);">Problem Solving</span>
+                    <span class="px-4 py-2 rounded-full text-sm"
+                        style="background-color: var(--brown-dark); color: var(--beige-light);">Communication</span>
+                    <span class="px-4 py-2 rounded-full text-sm"
+                        style="background-color: var(--brown-dark); color: var(--beige-light);">Teamwork</span>
+                    <span class="px-4 py-2 rounded-full text-sm"
+                        style="background-color: var(--brown-dark); color: var(--beige-light);">Leadership</span>
+                    <span class="px-4 py-2 rounded-full text-sm"
+                        style="background-color: var(--brown-dark); color: var(--beige-light);">Adaptability</span>
+                    <span class="px-4 py-2 rounded-full text-sm"
+                        style="background-color: var(--brown-dark); color: var(--beige-light);">Critical Thinking</span>
+                    <span class="px-4 py-2 rounded-full text-sm"
+                        style="background-color: var(--brown-dark); color: var(--beige-light);">Time Management</span>
+                    <span class="px-4 py-2 rounded-full text-sm"
+                        style="background-color: var(--brown-dark); color: var(--beige-light);">Analytical
+                        Thinking</span>
+                </div>
+            </div>
+
+            <!-- Interests -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4">Interests</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 rounded-full text-sm"
+                        style="background-color: var(--beige); border: 1px solid var(--brown-dark);">Artificial
+                        Intelligence</span>
+                    <span class="px-4 py-2 rounded-full text-sm"
+                        style="background-color: var(--beige); border: 1px solid var(--brown-dark);">Data Science</span>
+                    <span class="px-4 py-2 rounded-full text-sm"
+                        style="background-color: var(--beige); border: 1px solid var(--brown-dark);">Cybersecurity</span>
+                    <span class="px-4 py-2 rounded-full text-sm"
+                        style="background-color: var(--beige); border: 1px solid var(--brown-dark);">Full-Stack Web
+                        Development</span>
+                    <span class="px-4 py-2 rounded-full text-sm"
+                        style="background-color: var(--beige); border: 1px solid var(--brown-dark);">Startup
+                        Technology</span>
+                    <span class="px-4 py-2 rounded-full text-sm"
+                        style="background-color: var(--beige); border: 1px solid var(--brown-dark);">Open Source
+                        Development</span>
+                    <span class="px-4 py-2 rounded-full text-sm"
+                        style="background-color: var(--beige); border: 1px solid var(--brown-dark);">Machine Learning
+                        Research</span>
+                </div>
+            </div>
+
+            <!-- References -->
+            <div class="text-center">
+                <h3 class="text-2xl font-semibold mb-2">References</h3>
+                <p class="text-[var(--brown-light)]">Available upon request.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12">Portfolio</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 rounded-lg hover-lift" style="background-color: var(--beige);">
+                    <h3 class="text-xl font-semibold mb-2">AI ECG Bio-Signal System</h3>
+                    <p>AI-powered ECG preprocessing system with documentation, version control, and system design.</p>
+                </div>
+                <div class="bg-[var(--beige)] p-6 rounded-lg hover-lift">
+                    <h3 class="text-xl font-semibold mb-2">AI Mental Health Diagnosis</h3>
+                    <p>Intelligent system for preliminary mental health assessments using ML.</p>
+                </div>
+                <div class="bg-[var(--beige)] p-6 rounded-lg hover-lift">
+                    <h3 class="text-xl font-semibold mb-2">FairAgro</h3>
+                    <p>Technology solution improving agricultural processes through collaborative development.</p>
+                </div>
+                <div class="bg-[var(--beige)] p-6 rounded-lg hover-lift">
+                    <h3 class="text-xl font-semibold mb-2">Smart Lamp AI</h3>
+                    <p>Intelligent smart lamp with automated decision-making using AI.</p>
+                </div>
+                <div class="bg-[var(--beige)] p-6 rounded-lg hover-lift">
+                    <h3 class="text-xl font-semibold mb-2">Interactive Calculator</h3>
+                    <p>Modern landing page with Three.js animations and responsive design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20" style="background-color: var(--beige);">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6">Get In Touch</h2>
+            <div class="space-y-3">
+                <p><i class="fas fa-map-marker-alt mr-2 text-[var(--brown-dark)]"></i>Lagos, Nigeria</p>
+                <p><i class="fas fa-phone mr-2 text-[var(--brown-dark)]"></i>+234 806 499 4608</p>
+                <p><i class="fas fa-envelope mr-2 text-[var(--brown-dark)]"></i>benostephanie16@gmail.com</p>
+                <p><i class="fab fa-linkedin mr-2 text-[var(--brown-dark)]"></i><a
+                        href="https://www.linkedin.com/in/limaro-beno-061846222" target="_blank"
+                        class="hover:text-[var(--brown-light)]">linkedin.com/in/limaro-beno-061846222</a></p>
+                <p><i class="fab fa-github mr-2 text-[var(--brown-dark)]"></i><a href="https://github.com/Faro123-sudo"
+                        target="_blank" class="hover:text-[var(--brown-light)]">github.com/Faro123-sudo</a></p>
+            </div>
+        </div>
+    </section>
+</body>
+
+<!-- Footer -->
+<footer class="text-white py-6 text-center" style="background-color: var(--brown-dark);">
+    <p>© 2026 Stephanie Beno.</p>
+</footer>
+
+</html>
