@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Limaro Stephanie Beno — Resume</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #4a4a4a;
+    background: #fff;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #fbf9f6;
+    position: relative;
+  }
+  .header {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    padding: 34px 44px 26px 44px;
+    background: linear-gradient(90deg, #ede4dc 0%, #f4ece5 60%, #fbf9f6 100%);
+    border-bottom: 3px solid #b08d7f;
+  }
+  .photo {
+    width: 92px;
+    height: 92px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #ccc;
+  }
+  .header-text h1 {
+    margin: 4px 0 12px 0;
+    font-size: 30px;
+    letter-spacing: 1px;
+    color: #a9836f;
+    font-weight: 700;
+  }
+  .contact-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    color: #5a5a5a;
+    margin-bottom: 5px;
+  }
+  .contact-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    background: #b08d7f;
+    color: #fff;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .content {
+    padding: 0 44px 40px 44px;
+  }
+  .section {
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd3c9;
+  }
+  .section-label {
+    width: 170px;
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #3a3a3a;
+    text-transform: uppercase;
+    border-left: 4px solid #b08d7f;
+    padding-left: 12px;
+  }
+  .section-body {
+    flex: 1;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .summary-text { margin: 0; color: #5a5a5a; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 30px;
+  }
+  .skills-grid ul { margin: 0; padding-left: 16px; }
+  .skills-grid li { margin-bottom: 6px; color: #5a5a5a; }
+
+  .job { margin-bottom: 18px; }
+  .job:last-child { margin-bottom: 0; }
+  .job-title {
+    font-weight: 700;
+    color: #3a3a3a;
+    font-size: 13.5px;
+  }
+  .job-date { font-weight: 400; color: #7a7a7a; }
+  .job-org {
+    font-style: italic;
+    color: #6a6a6a;
+    margin: 2px 0 6px 0;
+  }
+  .job ul { margin: 0; padding-left: 18px; color: #5a5a5a; }
+  .job li { margin-bottom: 4px; }
+  .divider {
+    border: none;
+    border-top: 1px dashed #d8cfc4;
+    margin: 16px 0;
+  }
+
+  .edu-school {
+    font-style: italic;
+    font-weight: 600;
+    color: #4a4a4a;
+    font-size: 13.5px;
+  }
+  .edu-degree {
+    font-weight: 700;
+    color: #3a3a3a;
+    margin: 3px 0 8px 0;
+  }
+  .edu-body ul { margin: 0; padding-left: 18px; color: #5a5a5a; }
+  .edu-body li { margin-bottom: 5px; }
+  .thesis-title { font-weight: 700; color: #3a3a3a; }
+
+  .portfolio-link {
+    color: #a9836f;
+    text-decoration: none;
+    word-break: break-all;
+  }
+
+  .activities ul { margin: 0; padding-left: 18px; color: #5a5a5a; }
+  .activities li { margin-bottom: 5px; }
+
+  @media print {
+    body { background: #fff; }
+    .page { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <img src="1752865263493.jpg" alt="Limaro Stephanie Beno" class="photo" style="object-fit:cover;" />
+    <div class="header-text">
+      <h1>LIMARO STEPHANIE BENO</h1>
+      <div class="contact-line"><span class="contact-icon">📍</span>Lagos, Nigeria</div>
+      <div class="contact-line"><span class="contact-icon">☎</span>+234 806 499 4608</div>
+      <div class="contact-line"><span class="contact-icon">✉</span>benostephanie16@gmail.com</div>
+      <div class="contact-line"><span class="contact-icon">in</span>www.linkedin.com/in/limaro-beno-061846222</div>
+      <div class="contact-line"><span class="contact-icon">🔀</span>github.com/Faro123-sudo</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="section">
+      <div class="section-label">Summary</div>
+      <div class="section-body">
+        <p class="summary-text">Software Engineering graduate from Veritas University, Abuja (GPA 4.18/5.0), with hands-on experience in Artificial Intelligence, Web Development, UI/UX Design, and Data Analysis. Completed internships at APTECH, CyYBERSPACE Nigeria, and Cyber Future Academy, developing software, optimizing network operations, and designing user-centered interfaces. Proven leadership as General Secretary of NACOS and Project Manager for SAIL. Passionate about building user-focused applications and applying emerging technologies to solve real-world problems.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Skills</div>
+      <div class="section-body">
+        <div class="skills-grid">
+          <ul>
+            <li>User interface design</li>
+            <li>User research</li>
+            <li>Advanced coding</li>
+            <li>User Research Analysis</li>
+            <li>Project management</li>
+            <li>Workflow Optimization</li>
+          </ul>
+          <ul>
+            <li>Problem solving</li>
+            <li>Attention to detail</li>
+            <li>Effective communication</li>
+            <li>Teamwork</li>
+            <li>Adaptable Learner</li>
+            <li>Basic AI Concepts</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Experience</div>
+      <div class="section-body">
+
+        <div class="job">
+          <div class="job-title">Internship Student <span class="job-date">— 07/2025 – 09/2025</span></div>
+          <div class="job-org">APTECH, Abeokuta, Ogun State, Nigeria</div>
+          <ul>
+            <li>Developed software applications using advanced coding skills to meet user needs.</li>
+          </ul>
+        </div>
+
+        <hr class="divider">
+
+        <div class="job">
+          <div class="job-title">Network Operation Support Intern <span class="job-date">— 07/2024 – 07/2024</span></div>
+          <div class="job-org">CyYBERSPACE Nigeria, Lagos, Nigeria</div>
+          <ul>
+            <li>Completed tasks and projects on time through collaboration.</li>
+            <li>Used basic networking skills for troubleshooting.</li>
+            <li>Fostered clear communication within the team.</li>
+            <li>Optimized workflow with time management.</li>
+          </ul>
+        </div>
+
+        <hr class="divider">
+
+        <div class="job">
+          <div class="job-title">UI/UX Designer <span class="job-date">— 07/2023 – 09/2023</span></div>
+          <div class="job-org">Cyber Future Academy, Abuja, Nigeria</div>
+          <ul>
+            <li>Collaborated with team to design user-friendly interfaces for educational platforms.</li>
+            <li>Created wireframes and prototypes for new online courses and resources.</li>
+            <li>Conducted user research to gather feedback on digital learning tools.</li>
+            <li>Collaborated with colleagues to ensure timely completion of tasks and projects.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Education and Training</div>
+      <div class="section-body edu-body">
+        <div class="edu-school">Veritas University, Abuja, Abuja, Nigeria — 07/2026</div>
+        <div class="edu-degree">Bachelor of Science: Software Engineering</div>
+        <ul>
+          <li>Workshops and Seminars Attended: TEDxVeritasUni, School to Work</li>
+          <li>Thesis or Dissertation Title: <span class="thesis-title">Leveraging Artificial Intelligence for Development by Giving Voice to Hyam (Kwyeny) People of Kaduna State via Transformer Language Translation Application</span></li>
+          <li>Completed online course on Cisco's Python</li>
+          <li>4.18/5.0 GPA</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Portfolio</div>
+      <div class="section-body">
+        <a class="portfolio-link" href="https://stephanie-portfolio-5ezz9ercq-stephbs-projects-d99986cc.vercel.app/">https://stephanie-portfolio-5ezz9ercq-stephbs-projects-d99986cc.vercel.app/</a>
+      </div>
+    </div>
+
+    <div class="section" style="border-bottom:none;">
+      <div class="section-label">Activities</div>
+      <div class="section-body activities">
+        <ul>
+          <li>General Secretary for NACOS — (2023–2025)</li>
+          <li>Project Manager for SAIL — (2024)</li>
+          <li>Developer, NextStep Navigator — (present)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
